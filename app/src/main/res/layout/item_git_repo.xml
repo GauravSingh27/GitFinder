@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+
+        <ImageView
+            android:id="@+id/iv_item_git_repo_img"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_item_git_repo_watcher"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_item_git_repo_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_item_git_repo_img"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_item_git_repo_full_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_item_git_repo_img"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_git_repo_name"
+            app:layout_constraintVertical_bias="0.16000003" />
+
+        <View
+            android:id="@+id/divider_item_git_repo"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_item_git_repo_img"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_git_repo_full_name" />
+
+        <ImageView
+            android:id="@+id/iv_item_git_repo_watcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/iv_item_git_repo_img"
+            app:layout_constraintTop_toBottomOf="@id/divider_item_git_repo"
+            app:srcCompat="@drawable/ic_watcher" />
+
+        <TextView
+            android:id="@+id/tv_item_git_repo_watcher_count"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_item_git_repo_watcher"
+            app:layout_constraintStart_toEndOf="@+id/iv_item_git_repo_watcher"
+            app:layout_constraintTop_toTopOf="@+id/iv_item_git_repo_watcher" />
+
+        <ImageView
+            android:id="@+id/iv_item_git_repo_stargazer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_item_git_repo_stargazer_count"
+            app:layout_constraintTop_toBottomOf="@id/divider_item_git_repo"
+            app:srcCompat="@drawable/ic_star" />
+
+        <TextView
+            android:id="@+id/tv_item_git_repo_stargazer_count"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="center_vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_item_git_repo_stargazer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_item_git_repo_stargazer" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/iv_item_git_repo_stargazer"
+            app:layout_constraintStart_toEndOf="@+id/tv_item_git_repo_watcher_count"
+            app:layout_constraintTop_toBottomOf="@+id/divider_item_git_repo">
+
+            <ImageView
+                android:id="@+id/iv_item_git_repo_fork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:srcCompat="@drawable/ic_fork" />
+
+            <TextView
+                android:id="@+id/tv_item_git_repo_fork_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>
