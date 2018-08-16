@@ -1,5 +1,6 @@
 package com.gauravsingh.gitfinder.ui
 
+import android.opengl.Visibility
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,7 @@ import kotlinx.android.synthetic.main.item_git_repo.view.*
 
 internal class GitRepoRecyclerViewAdapter(
         val listener: OnItemClickListener,
-        var gitRepoList: List<GitRepo>)
+        var gitRepoList: List<GitRepo>, private val imgVisibility: Boolean)
     : RecyclerView.Adapter<GitRepoRecyclerViewAdapter.GitRepoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GitRepoViewHolder {
@@ -41,16 +42,20 @@ internal class GitRepoRecyclerViewAdapter(
 
         fun bindData(gitRepo: GitRepo) {
 
+            if (imgVisibility) {
+
+                itemView.iv_item_git_repo_img.visibility = View.VISIBLE
+                Picasso.Builder(itemView.context).build().load(gitRepo.owner.avatarUrl)
+                        .placeholder(R.drawable.ic_user)
+                        .error(R.drawable.ic_user)
+                        .into(itemView.iv_item_git_repo_img)
+            }
+
             itemView.tv_item_git_repo_name.text = gitRepo.name
             itemView.tv_item_git_repo_full_name.text = gitRepo.fullName
             itemView.tv_item_git_repo_watcher_count.text = gitRepo.watchersCount.toString()
             itemView.tv_item_git_repo_fork_count.text = gitRepo.forksCount.toString()
             itemView.tv_item_git_repo_stargazer_count.text = gitRepo.stargazersCount.toString()
-
-            Picasso.Builder(itemView.context).build().load(gitRepo.owner.avatarUrl)
-                    .placeholder(R.drawable.ic_user)
-                    .error(R.drawable.ic_user)
-                    .into(itemView.iv_item_git_repo_img)
         }
 
         override fun onClick(v: View?) {

@@ -21,15 +21,18 @@ internal class GitRepo(
         @SerializedName("owner")
         @Expose
         val owner: Contributor,
-        @SerializedName("html_url")
+        @SerializedName("contributors_url")
         @Expose
-        val htmlUrl: String,
+        val contributorsUrl: String,
         @SerializedName("description")
         @Expose
-        val description: String,
+        val description: String?,
         @SerializedName("url")
         @Expose
         val url: String,
+        @SerializedName("html_url")
+        @Expose
+        val htmlUrl: String,
         @SerializedName("size")
         @Expose
         val size: Int,
@@ -41,7 +44,13 @@ internal class GitRepo(
         val watchersCount: Int,
         @SerializedName("forks_count")
         @Expose
-        val forksCount: Int) : Parcelable {
+        val forksCount: Int,
+        @SerializedName("default_branch")
+        @Expose
+        val defaultBranch: String,
+        @SerializedName("language")
+        @Expose
+        val language: String?): Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.readString(),
@@ -51,11 +60,13 @@ internal class GitRepo(
             parcel.readString(),
             parcel.readString(),
             parcel.readString(),
+            parcel.readString(),
             parcel.readInt(),
             parcel.readInt(),
             parcel.readInt(),
-            parcel.readInt()) {
-    }
+            parcel.readInt(),
+            parcel.readString(),
+            parcel.readString())
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
@@ -63,13 +74,16 @@ internal class GitRepo(
         parcel.writeString(name)
         parcel.writeString(fullName)
         parcel.writeParcelable(owner, flags)
-        parcel.writeString(htmlUrl)
+        parcel.writeString(contributorsUrl)
         parcel.writeString(description)
         parcel.writeString(url)
+        parcel.writeString(htmlUrl)
         parcel.writeInt(size)
         parcel.writeInt(stargazersCount)
         parcel.writeInt(watchersCount)
         parcel.writeInt(forksCount)
+        parcel.writeString(defaultBranch)
+        parcel.writeString(language)
     }
 
     override fun describeContents(): Int {

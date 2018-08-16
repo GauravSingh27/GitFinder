@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_bottom_sheet_filter_apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:enabled="false"
+        android:text="@string/apply" />
+
+    <TextView
+        android:id="@+id/tv_bottom_sheet_filter_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_bottom_sheet_filter_apply"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toStartOf="@id/tv_bottom_sheet_filter_apply"
+        android:enabled="false"
+        android:padding="8dp"
+        android:text="@string/reset" />
+
+    <TextView
+        android:id="@+id/tv_bottom_sheet_filter_by_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/tv_bottom_sheet_filter_reset"
+        android:text="@string/filters"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_bottom_sheet_sort_by_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_bottom_sheet_filter_by_header"
+        android:layout_marginTop="16dp"
+        android:text="@string/sort"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/rg_bottom_sheet_sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_bottom_sheet_sort_by_header"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/rb_sort_star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stars" />
+
+
+        <RadioButton
+            android:id="@+id/rb_sort_forks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/forks" />
+
+
+        <RadioButton
+            android:id="@+id/rb_sort_updated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/updated" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_bottom_sheet_order_by_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rg_bottom_sheet_sort"
+        android:layout_marginTop="16dp"
+        android:text="@string/order_by"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/rg_bottom_sheet_order_by"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_bottom_sheet_order_by_header"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/rb_order_by_asc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/asc" />
+
+
+        <RadioButton
+            android:id="@+id/rb_order_by_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/desc" />
+    </RadioGroup>
+</RelativeLayout>

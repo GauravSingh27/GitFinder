@@ -22,6 +22,7 @@
             android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_item_git_repo_watcher"
             app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
