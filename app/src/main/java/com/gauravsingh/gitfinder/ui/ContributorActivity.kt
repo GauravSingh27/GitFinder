@@ -26,9 +26,8 @@ import kotlinx.android.synthetic.main.content_git_repo.*
 
 internal class ContributorActivity : AppCompatActivity(), GitRepoRecyclerViewAdapter.OnItemClickListener {
 
-
-    private lateinit var gitRepoRecyclerViewAdapter: GitRepoRecyclerViewAdapter
     private var isDataFetched = false
+    private lateinit var gitRepoRecyclerViewAdapter: GitRepoRecyclerViewAdapter
     private val networkChangeReceiver: NetworkChangeReceiver by lazy { NetworkChangeReceiver() }
 
     inner class NetworkChangeReceiver : BroadcastReceiver() {

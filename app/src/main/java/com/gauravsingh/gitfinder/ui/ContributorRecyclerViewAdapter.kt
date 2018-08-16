@@ -48,7 +48,8 @@ internal class ContributorRecyclerViewAdapter(
 
             itemView.tv_item_contributor_name.text = contributor.login
             itemView.tv_item_contributor_url.text = contributor.htmlUrl
-            itemView.tv_item_contributor_contribution_count.text = itemView.context.getString(R.string.contributions, contributor.contributions.toString())
+            itemView.tv_item_contributor_contribution_count.text =
+                    itemView.context.getString(R.string.contributions, contributor.contributions.toString())
 
 
         }

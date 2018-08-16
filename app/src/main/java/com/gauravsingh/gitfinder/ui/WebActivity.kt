@@ -1,9 +1,5 @@
 package com.gauravsingh.gitfinder.ui
 
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.net.ConnectivityManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
@@ -19,10 +15,9 @@ internal class WebActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
-        setSupportActionBar(toolbar_web)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        web_view.loadUrl(intent.getStringExtra("url"))
-        web_view.webViewClient = webViewClient
+
+        initToolbar()
+        initWebView()
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -43,12 +38,27 @@ internal class WebActivity : AppCompatActivity() {
         }
     }
 
-    private val webViewClient = object : WebViewClient() {
+    private fun initToolbar() {
+
+        setSupportActionBar(toolbar_web)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+
+    private fun initWebView() {
+
+        web_view.apply {
+            loadUrl(intent.getStringExtra("url"))
+            this.webViewClient = webClient
+        }
+    }
+
+    private val webClient = object : WebViewClient() {
+
         override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
 
             view?.loadUrl(request?.url.toString())
             return true
         }
     }
-
 }

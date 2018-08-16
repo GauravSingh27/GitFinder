@@ -152,6 +152,50 @@ internal class HomeActivity
         }
     }
 
+
+    private fun isDataToBeFetched(str1: String, str2: String) =
+            !TextUtils.equals(str1.trim().toLowerCase(), str2.trim().toLowerCase())
+
+    private fun populateData(gitRepoList: List<GitRepo>) {
+
+        if (rv_git_repo_home.adapter == null) {
+
+            initGitRepoRecyclerView(gitRepoList)
+        } else {
+
+            updateGitRepoRecyclerView(gitRepoList)
+        }
+    }
+
+    private fun initGitRepoRecyclerView(gitRepoList: List<GitRepo>) {
+
+        rv_git_repo_home.layoutManager = LinearLayoutManager(this)
+        gitRepoRecyclerViewAdapter = GitRepoRecyclerViewAdapter(this, gitRepoList, true)
+        rv_git_repo_home.adapter = gitRepoRecyclerViewAdapter
+    }
+
+
+    private fun updateGitRepoRecyclerView(gitRepoList: List<GitRepo>) {
+
+        gitRepoRecyclerViewAdapter.gitRepoList = gitRepoList
+        gitRepoRecyclerViewAdapter.notifyDataSetChanged()
+    }
+
+    private val actionExpandListener = object : MenuItem.OnActionExpandListener {
+
+        override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+            return true
+        }
+
+        override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+            if (isDataToBeFetched(lastSearchedString.trim(), "Gaurav")) {
+                fetchData()
+            }
+            return true
+        }
+    }
+
+
     private val searchQueryListener = object : SearchView.OnQueryTextListener {
 
         override fun onQueryTextSubmit(query: String): Boolean {
@@ -169,35 +213,4 @@ internal class HomeActivity
         }
 
     }
-
-    private fun isDataToBeFetched(str1: String, str2: String) =
-            !TextUtils.equals(str1.trim().toLowerCase(), str2.trim().toLowerCase())
-
-    private val actionExpandListener = object : MenuItem.OnActionExpandListener {
-        override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-            return true
-        }
-
-        override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-            if (isDataToBeFetched(lastSearchedString.trim(), "Gaurav")) {
-                fetchData()
-            }
-            return true
-        }
-
-    }
-
-    private fun populateData(gitRepoList: List<GitRepo>) {
-
-        if (rv_git_repo_home.adapter == null) {
-
-            rv_git_repo_home.layoutManager = LinearLayoutManager(this)
-            gitRepoRecyclerViewAdapter = GitRepoRecyclerViewAdapter(this, gitRepoList, true)
-            rv_git_repo_home.adapter = gitRepoRecyclerViewAdapter
-        } else {
-            gitRepoRecyclerViewAdapter.gitRepoList = gitRepoList
-            gitRepoRecyclerViewAdapter.notifyDataSetChanged()
-        }
-    }
-
 }
